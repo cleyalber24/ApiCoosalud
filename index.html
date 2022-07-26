@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ApiCoosalud</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+      integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
+    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
+    <!-- ↓↓ FavIcon ↓↓ -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://www.calidadmedicaips.com/wp-content/uploads/2018/07/logo-clidad.png"
+    />
+    <!-- ↑↑ FavIcon ↑↑ -->
+
+    <!-- ↓↓ Hoja de estilos CSS ↓↓ -->
+    <link rel="stylesheet" href="app.css" />
+    <!-- ↑↑ Hoja de estilos CSS ↑↑ -->
+  </head>
+  <body>
+    <div class="container-fluid">
+      <img
+        src="https://www.calidadmedicaips.com/wp-content/uploads/2018/07/logo-clidad.png"
+        alt="MDN"
+      />
+      <h1 class="mb-2 mb-4">Consulta de Afiliados</h1>
+      <div class="search-section mt-1 mb-1 mb-4">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="documento" class="pl-2">Documento</label>
+            <input
+              type="text"
+              class="form-control ml-3 form-control-sm"
+              id="documento"
+              placeholder="Ingrese el documento"
+            />
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+          <button class="btn btn-success btn-search btn-sm ml-3">
+            <i class="fas fa-search"></i> Buscar
+          </button>
+          <button
+            id="btnExportar"
+            class="btn btn-success"
+            style="margin-left: 10px"
+          >
+            <i class="fas fa-file-excel"></i> Exportar datos a Excel
+          </button>
+          <div class="custom-control custom-checkbox w-100">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              id="autodownload"
+            />
+            <label
+              class="custom-control-label justify-content-start"
+              for="autodownload"
+              >Descarga Automatica</label
+            >
+          </div>
+        </form>
+        <div class="count-register">
+          <div class="form-group">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              id="auto_download"
+            />
+            <label for="separator-register" class="pl-2"
+              >Separador de Registro</label
+            >
+            <input
+              type="text"
+              class="form-control ml-3 form-control-sm"
+              id="separator-register"
+              placeholder="Ejemplo , ; : - "
+              value=""
+            />
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+          <div>
+            <h5>
+              Registros <span class="badge badge-pill badge-success">0</span>
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div id="dates">
+        <table id="tabla" class="table table-data">
+          <thead>
+            <tr>
+              <!-- <th scope="col">#</th> -->
+              <!-- <th scope="col">Carnet</th> -->
+              <th scope="col">Tipo Doc</th>
+              <th scope="col">Documento</th>
+              <th scope="col">Nombre1</th>
+              <th scope="col">Nombre2</th>
+              <th scope="col">Apellidos1</th>
+              <th scope="col">Apellidos2</th>
+              <th scope="col">Fecha Nacimiento</th>
+              <th scope="col">Sexo</th>
+              <th scope="col">Ciudad</th>
+              <th scope="col">Departamento</th>
+              <th scope="col">Ips Asignada</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Nivel Sisben</th>
+              <th scope="col">Regimen</th>
+              <th scope="col">Rango</th>
+              <th scope="col">Tipo Poblacion</th>
+              <th scope="col">Poblacion Descripcion</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Celular</th>
+              <th scope="col" style="display: none">Descargar</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="opciones">
+        <button class="btn btn-success btn-download-certificates">
+          <i class="fas fa-download"></i> Descargar Certificados
+        </button>
+        <button class="btn btn-danger btn-remove-data">
+          <i class="fas fa-trash"></i> Borrar todo
+        </button>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+
+    <!--Footer-->
+    <footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
+      <hr />
+
+      <!--Copyright-->
+      <div class="footer-copyright py-3 text-center">
+        <a href="#">ApiCoosalud_Lrapa99</a> © 2022
+      </div>
+      <!--/.Copyright-->
+    </footer>
+    <!--/.Footer-->
+  </body>
+</html>

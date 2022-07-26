@@ -1,0 +1,55 @@
+.reg-allow{
+    color: #28a745;
+  }
+  .reg-other{
+    color: #2382ff;
+  }
+  .reg-departament{
+    color: #FF7400;
+  }
+  .reg-inactive{
+    color: red;
+    text-decoration: line-through;
+    /* background: #FFC3C3; */
+  }
+  .icon-contributory{
+    font-size: 30px;
+    display: block;
+  }
+  .search-section{
+    display: flex;
+    justify-content: space-between;
+  }.table-data tbody {
+    position: relative;
+  }
+  .table-data tbody tr{
+    position: relative;
+    border-bottom: 2px solid #eee;
+    transition: all .2s ease;
+  }
+  .table-data tbody tr:hover{
+    border-bottom:2px solid #cccccc;
+    background: rgb(250, 250, 250);
+  }
+.count-register{
+  text-align: right;
+}
+  footer.page-footer{
+    width: 100%;
+  }
+  .table-data tbody td{
+    font-size: 16px;
+  }
+  .table-data td, .table-data thead th, .table-data tbody th
+  {
+    vertical-align: middle;
+    text-align: center;
+  }
+  .table-data tbody td span.badge{
+    font-size: 14px;
+  }
+  .container-fluid{
+    /* margin: 0 2em; */
+    width: 95%;
+    margin-top: 2em;
+  }
